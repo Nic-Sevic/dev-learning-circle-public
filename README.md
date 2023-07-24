@@ -12,6 +12,7 @@ Current state:
 ![2023-07-24 at 18 35](https://github.com/Nic-Sevic/dev-learning-circle-public/assets/47717887/1824f029-e941-4e23-994c-c20c84313bfe)
 
 bundled version: https://github.com/Nic-Sevic/dev-learning-circle-public/blob/main/plugins/nisaya-menu.zip
+
 demo data: https://github.com/Nic-Sevic/dev-learning-circle-public/blob/main/plugins/Demo%20menu%20items.sql
 
 TO-DO:
