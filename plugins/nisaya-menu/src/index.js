@@ -13,13 +13,13 @@ const App = () => {
 			'quantity': '1'
 		}
 	]);
-	const addToCart = (item) => {
-		setCartItems([...cartItems, item]);
+	// const addToCart = (item) => {
+	// 	setCartItems([...cartItems, item]);
 	};
 	return (
 		<div>
-			<Menu addToCart={addToCart}/>
-			<Cart cartItems={cartItems}/>
+			<Menu addToCart={ addToCart }/>
+			<Cart cartItems={ cartItems }/>
 		</div>
 	);
 }

@@ -5,6 +5,8 @@ import apiFetch from '@wordpress/api-fetch';
 import PropTypes from 'prop-types';
 import './cart-components';
 
+var addedItems = [];
+
 // addresses issue #8 - Create initial component structure for Menu page
 class MenuItem extends React.Component {
 	constructor(props) {
@@ -23,8 +25,9 @@ class MenuItem extends React.Component {
 	// handle adding menu item to cart
 	handleSubmit = () => {
 		const item = [this.state.title, this.state.price, this.state.number];
-		addToCart(item);
+		addedItems.push(item);
 		console.log(item);
+		console.log(addedItems);
 	};
 
 	// allows to increase number ordered
@@ -48,45 +51,6 @@ class MenuItem extends React.Component {
 	}
   };
 
-// // MenuItem compoenent rewritten as a function
-// function MenuItem({ addToCart }) {
-// 	const [menuItems, setMenuItems] = useState([
-// 		{
-// 		id: 0,
-// 		image: 'img src here',
-// 		title: 'title',
-// 		price: 'price',
-// 		currency: '$',
-// 		description: 'description',
-// 		number: 0
-// 	  }]);
-
-// 	// handle adding menu item to cart
-// 	handleSubmit = () => {
-// 		const item = [title, price, number];
-// 		addToCart(item);
-// 		console.log(item);
-// 	};
-
-// 	// allows to increase number ordered
-// 	handleChange = (event) => {
-// 		this.setState({ number: event.target.value });
-// 	};
-
-// 	return (
-// 		<div id={'nisaya-menu-item' + id}>
-// 			<h3 className='nisaya-item-title'>{title}</h3>
-// 			<img className='nisaya-item-image' src={image} />
-// 			<p className='nisaya-item-description'>{description}</p>
-// 			<p className='nisaya-item-price'>{currency}{price}</p>
-// 			<form onSubmit={handleSubmit()}>
-// 				<input type='number' value={number} onChange={handleChange()}></input>
-// 				<button className='nisaya-item-button' type="submit">Add to Cart</button>
-// 			</form>
-// 		</div>
-// 	  );
-// };
-
 
 // satisfies #11 - performs the api call, consumes the data, and then returns it in the format defined by MenuItem component
 // used useState and data.length > 0 rather than setting the data to [] in the constant declaration to ensure that data
@@ -104,7 +68,7 @@ const Menu = ({addToCart}) => {
 		<div id='nisaya-menu-items'>
 			{data.length > 0 && data.map((item) => {
 				return (
-					<MenuItem key={item.id} {...item} addToCart={addToCart}/>
+					<MenuItem key={item.id} {...item} />
 				);
 			})}
 
@@ -134,7 +98,7 @@ MenuItem.defaultProps = {
 	id: 0,
 	image: 'img src here',
 	title: "title",
-	price: 0,
+	price: "0",
 	currency: '$',
 	description: 'description'
 }
